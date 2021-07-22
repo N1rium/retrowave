@@ -7,24 +7,32 @@ import RangeInput from '../components/RangeInput';
 import Title from '../components/Title';
 import Folder from '../components/Folder';
 import Star from '../components/Star';
+import Spinner from '../components/Spinner';
+import ParticleEmitter from '../components/ParticleEmitter';
+import Particle from '../components/Particle';
 import { useState } from 'react';
 
-const Wrapper = styled.div.attrs({ className: 'flex flex-col items-center justify-center' })`
+const Container = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+`;
+
+const Welcome = styled(Container).attrs({ className: 'p-20' })``;
+
+const Wrapper = styled(Container).attrs({ className: 'flex flex-col items-center justify-center' })`
   position: relative;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('https://img5.goodfon.com/wallpaper/nbig/a/d2/vadim-motov-by-vadim-motov-spectating-science-fiction-lambor.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
 `;
 
 const Toolbar = styled.div.attrs({ className: 'p-5' })`
   position: absolute;
   top: 0;
   right: 0;
-  color: var(--gray-200);
 
   & > :not(:first-child) {
     margin-left: 1rem;
@@ -70,49 +78,58 @@ export default function Home() {
   const [val, setValue] = useState(50);
 
   return (
-    <Wrapper>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-        <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
-      </Head>
+    <>
+      <Wrapper>
+        <Head>
+          <title>Create Next App</title>
+          <link rel="icon" href="/favicon.ico" />
+          <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+        </Head>
 
-      <Toolbar>
-        <IconButton className="fas fa-user" active={menu === 'profile'} onClick={() => setMenu('profile')} />
-        <IconButton className="fas fa-question" active={menu === 'welcome'} onClick={() => setMenu('welcome')} />
-        <IconButton className="fas fa-cog" active={menu === 'settings'} onClick={() => setMenu('settings')} />
+        <Toolbar>
+          <IconButton className="fas fa-user" active={menu === 'profile'} onClick={() => setMenu('profile')} />
+          <IconButton className="fas fa-question" active={menu === 'welcome'} onClick={() => setMenu('welcome')} />
+          <IconButton className="fas fa-cog" active={menu === 'settings'} onClick={() => setMenu('settings')} />
 
-        <ToolbarMenu>
-          {menu === 'settings' && (
-            <Fieldset title="Settings">
-              <RangeInput type="range" min="0" max="100" value={val} onChange={(e) => setValue(e.target.value)} />
-              <ColorBox />
-            </Fieldset>
-          )}
-          {menu === 'profile' && <Fieldset title="Profile">Dahroooo</Fieldset>}
-          {menu === 'welcome' && (
-            <Fieldset title="Welcome!">
-              <p>You've reached Retrowave.css! A work in progress theme for Styled Components</p>
-              <p className="mt-4">
-                Explore and make sure you take a look at the current API for source code and other rad stuff!
-              </p>
-            </Fieldset>
-          )}
-        </ToolbarMenu>
-      </Toolbar>
+          <ToolbarMenu>
+            {menu === 'settings' && (
+              <Fieldset title="Settings">
+                <RangeInput type="range" min="0" max="100" value={val} onChange={(e) => setValue(e.target.value)} />
+                <ColorBox />
+              </Fieldset>
+            )}
+            {menu === 'profile' && <Fieldset title="Profile">Dahroooo</Fieldset>}
+            {menu === 'welcome' && (
+              <Fieldset title="Welcome!">
+                <p>You've reached Retrowave.css! A work in progress theme for Styled Components</p>
+                <p className="mt-4">
+                  Explore and make sure you take a look at the current API for source code and other rad stuff!
+                </p>
+              </Fieldset>
+            )}
+          </ToolbarMenu>
+        </Toolbar>
 
-      <Title text="retrowave" />
+        <Title text="retrowave" />
 
-      <Star style={{ position: 'absolute', top: '2em', left: '40vw' }} />
+        <Star style={{ position: 'absolute', top: '2em', left: '40vw' }} />
+        <Spinner />
 
-      <Nav>
-        <Button primary>
-          <div>Join session</div>
-        </Button>
-        <Button primary>
-          <div>Create session</div>
-        </Button>
-      </Nav>
-    </Wrapper>
+        <Nav>
+          <Button primary>
+            <div>Join session</div>
+          </Button>
+          <Button primary>
+            <div>Create session</div>
+          </Button>
+        </Nav>
+      </Wrapper>
+      <Welcome>
+        <h1 className="font-marker text-5xl mt-20 text-center">
+          Welcome back to the <span className="text-pink-600 text-6xl underline">future!</span>
+        </h1>
+        <ParticleEmitter count={20} />
+      </Welcome>
+    </>
   );
 }

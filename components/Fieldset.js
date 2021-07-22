@@ -34,7 +34,7 @@ const Legend = styled.legend.attrs({ className: 'px-3' })`
 export default function Container({ children, title }) {
   return (
     <Wrapper>
-      {title && <Legend align="bottom">{title}</Legend>}
+      {title && <Legend>{title}</Legend>}
       {children}
     </Wrapper>
   );
