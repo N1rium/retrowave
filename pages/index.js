@@ -18,7 +18,11 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-const Welcome = styled(Container).attrs({ className: 'p-20' })``;
+const Welcome = styled(Container).attrs({ className: 'p-20' })`
+  background: linear-gradient(#121212 30%, transparent 80%),
+    url('https://c.wallhere.com/photos/c1/a2/vaporwave_car_Chevrolet_city_skyscraper_trees_birds_sunset-1794077.jpg!d');
+  background-position: center;
+`;
 
 const Wrapper = styled(Container).attrs({ className: 'flex flex-col items-center justify-center' })`
   position: relative;
