@@ -2,7 +2,10 @@ import styled, { css, keyframes } from 'styled-components';
 
 const traverse = (x, y) => keyframes`
   0% {
+    opacity: 0;
     transform: translate(0,0);
+  }
+  10% {
     opacity: 1;
   }
   100% {

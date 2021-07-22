@@ -24,25 +24,23 @@ export default function ParticleEmitter({
     return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
   };
 
-  const [arr, setArr] = useState(
-    new Array(count).fill('').map((i) => ({
-      id: Math.random() * 1000,
-      size: sizes[Math.floor(Math.random() * sizes.length)],
-      color: colors[Math.floor(Math.random() * colors.length)],
-      ttl: `${getRandomIntInclusive(ttls[0], ttls[1])}s`,
-      x: `${getRandomIntInclusive(0, 100)}%`,
-      y: `${getRandomIntInclusive(0, 100)}%`,
-      dx: `${getRandomIntInclusive(-5000, 5000)}%`,
-      dy: `${getRandomIntInclusive(-5000, 5000)}%`,
-    }))
-  );
+  const getParticle = () => ({
+    id: Math.random() * 1000,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    color: colors[Math.floor(Math.random() * colors.length)],
+    ttl: `${getRandomIntInclusive(ttls[0], ttls[1])}s`,
+    x: `${getRandomIntInclusive(0, 100)}%`,
+    y: `${getRandomIntInclusive(0, 100)}%`,
+    dx: `${getRandomIntInclusive(-5000, 5000)}%`,
+    dy: `${getRandomIntInclusive(-5000, 5000)}%`,
+  });
 
-  console.log(arr);
+  const [arr, setArr] = useState(new Array(count).fill('').map(() => getParticle()));
 
   return (
     <Wrapper>
       {arr.map((particle) => (
-        <Particle {...particle} key={particle.id} />
+        <Particle key={particle.id} {...particle} />
       ))}
     </Wrapper>
   );
