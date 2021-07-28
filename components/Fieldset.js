@@ -19,6 +19,7 @@ const Wrapper = styled.fieldset.attrs({ className: 'p-4' })`
 
   &:hover {
     box-shadow: 0px 0px 8px 4px rgb(0 0 0 / 50%);
+    background: rgba(0, 0, 0, 0.6);
     legend {
       text-shadow: 0px 0px 4px;
     }
