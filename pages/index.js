@@ -5,11 +5,10 @@ import IconButton from '../components/IconButton';
 import Fieldset from '../components/Fieldset';
 import RangeInput from '../components/RangeInput';
 import Title from '../components/Title';
-import Folder from '../components/Folder';
 import Star from '../components/Star';
 import ParticleEmitter from '../components/ParticleEmitter';
 import { useState } from 'react';
-import Link from '@/components/Link';
+import Link from '../components/Link';
 
 const Container = styled.div`
   position: relative;
