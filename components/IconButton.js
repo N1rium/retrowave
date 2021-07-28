@@ -3,11 +3,28 @@ import styled, { css } from 'styled-components';
 export default styled.i.attrs({ className: 'flex flex-inline items-center justify-center p-3' })`
   transition: all 0.15s var(--cubic);
   border: 2px solid var(--pink-600);
-  border-radius: 9999px;
   font-size: 1.25rem;
   box-shadow: 0px 0px 14px 6px rgb(0 0 0 / 50%);
   min-width: 52px;
   min-height: 52px;
+
+  border-radius: ${(props) => (props.rounded ? '9999px' : '6px')};
+
+  ${(props) =>
+    props.sm &&
+    css`
+      min-width: 32px;
+      min-height: 32px;
+      font-size: 1rem;
+    `};
+
+  ${(props) =>
+    props.large &&
+    css`
+      min-width: 64px;
+      min-height: 64px;
+      font-size: 1.5rem;
+    `};
 
   &:hover {
     text-shadow: 0px 0px 2px;

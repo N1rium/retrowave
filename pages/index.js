@@ -9,9 +9,7 @@ import Folder from '../components/Folder';
 import Star from '../components/Star';
 import Spinner from '../components/Spinner';
 import ParticleEmitter from '../components/ParticleEmitter';
-import Particle from '../components/Particle';
 import { useState } from 'react';
-import Avatar from '../components/Avatar';
 import Link from '@/components/Link';
 
 import MusicApp from '@/components/apps/music';
@@ -102,9 +100,14 @@ export default function Home() {
         </Head>
 
         <Toolbar>
-          <IconButton className="fas fa-user" active={menu === 'profile'} onClick={() => setMenu('profile')} />
-          <IconButton className="fas fa-question" active={menu === 'welcome'} onClick={() => setMenu('welcome')} />
-          <IconButton className="fas fa-cog" active={menu === 'settings'} onClick={() => setMenu('settings')} />
+          <IconButton rounded className="fas fa-user" active={menu === 'profile'} onClick={() => setMenu('profile')} />
+          <IconButton
+            rounded
+            className="fas fa-question"
+            active={menu === 'welcome'}
+            onClick={() => setMenu('welcome')}
+          />
+          <IconButton rounded className="fas fa-cog" active={menu === 'settings'} onClick={() => setMenu('settings')} />
 
           <ToolbarMenu>
             {menu === 'settings' && (
@@ -153,9 +156,6 @@ export default function Home() {
         <Folder icon="fas fa-music" name="Howler" />
 
         <Star style={{ position: 'absolute', top: '2em', left: '40vw' }} />
-        <Spinner />
-
-        <MusicApp />
 
         <Nav>
           <Button primary>
