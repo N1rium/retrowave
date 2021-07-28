@@ -197,7 +197,7 @@ export default function Home() {
           <p className="mt-4">
             During the majority of my professional career, the thing that makes a person stand out is to care for the
             end consumer be it a client or a co-worker. "How would I want to use this?" is one of the most beneficial
-            question you can ask yourself.
+            questions you can ask yourself.
           </p>
         </main>
         <ParticleEmitter count={20} />
