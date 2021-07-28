@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const I = styled.i.attrs({ className: 'flex flex-inline items-center justify-center p-3' })`
+export default styled.i.attrs({ className: 'flex flex-inline items-center justify-center p-3' })`
   transition: all 0.15s var(--cubic);
   border: 2px solid var(--pink-600);
   border-radius: 9999px;
@@ -26,7 +26,3 @@ const I = styled.i.attrs({ className: 'flex flex-inline items-center justify-cen
       text-shadow: 0px 0px 2px;
     `};
 `;
-
-export default function IconButton(props) {
-  return <I {...props}></I>;
-}

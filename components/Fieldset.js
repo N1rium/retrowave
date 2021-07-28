@@ -31,9 +31,9 @@ const Legend = styled.legend.attrs({ className: 'px-3' })`
   font-size: 1.2rem;
 `;
 
-export default function Container({ children, title }) {
+export default function Container({ children, title, ...rest }) {
   return (
-    <Wrapper>
+    <Wrapper {...rest}>
       {title && <Legend>{title}</Legend>}
       {children}
     </Wrapper>

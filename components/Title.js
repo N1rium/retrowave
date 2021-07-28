@@ -29,15 +29,6 @@ const Letter = styled.span`
     css`
       animation: ${flicker} 0.15s ease-in-out;
     `};
-
-  span {
-    position: absolute;
-    bottom: 0;
-    width: 4px;
-    height: 4px;
-    background: var(--gray-200);
-    box-shadow: 0px 0px 4px 0px var(--gray-200);
-  }
 `;
 
 export default function Title({ text = 'abc' }) {
