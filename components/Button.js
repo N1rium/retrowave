@@ -31,6 +31,6 @@ export default styled.button`
     css`
       background-color: var(--pink-600);
       border-color: var(--pink-600);
-      color: var(--gray-200);
+      color: #fff;
     `};
 `;
