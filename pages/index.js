@@ -131,9 +131,20 @@ export default function Home() {
         </Nav>
       </Wrapper>
       <Welcome>
-        <h1 className="font-marker text-5xl mt-20 text-center">
-          Welcome back to the <span className="text-pink-600 text-6xl underline">future!</span>
-        </h1>
+        <main>
+          <h1 className="font-marker text-5xl mt-20">
+            Programming is <span className="text-pink-600 text-6xl underline text-shadow">art!</span>
+          </h1>
+          <p className="mt-10 text-xl">
+            <span className="font-marker mr-1 text-xl">"</span>Source code can be as elegant as the product itself
+            <span className="font-marker ml-1 text-xl">"</span>
+          </p>
+          <p className="mt-4">
+            During the majority of my professional career, the thing that makes a person stand out is to care for the
+            end consumer be it a client or a co-worker. "How would I want to use this?" is one of the most benefitial
+            question you can ask yourself.
+          </p>
+        </main>
         <ParticleEmitter count={20} />
       </Welcome>
     </>

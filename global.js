@@ -36,6 +36,10 @@ export default createGlobalStyle`
       margin: 0;
   }
 
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
 
   .flex {
     display: flex;
