@@ -171,8 +171,6 @@ export default function Home() {
 
         <Title text="blomman" />
 
-        <Folder icon="fas fa-music" name="Howler" />
-
         <Star style={{ position: 'absolute', top: '2em', left: '40vw' }} />
 
         <Nav>
