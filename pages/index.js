@@ -7,12 +7,9 @@ import RangeInput from '../components/RangeInput';
 import Title from '../components/Title';
 import Folder from '../components/Folder';
 import Star from '../components/Star';
-import Spinner from '../components/Spinner';
 import ParticleEmitter from '../components/ParticleEmitter';
 import { useState } from 'react';
 import Link from '@/components/Link';
-
-import MusicApp from '@/components/apps/music';
 
 const Container = styled.div`
   position: relative;
@@ -86,9 +83,20 @@ const ColorBox = styled.div`
   background: var(--pink-600);
 `;
 
+const Socials = styled.div.attrs({ className: 'p-5 flex ' })`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  & > :not(:first-child) {
+    margin-left: 1rem;
+  }
+`;
+
 export default function Home() {
   const [menu, setMenu] = useState('welcome');
   const [val, setValue] = useState(50);
+  const redirect = (url) => window.open(url);
 
   return (
     <>
@@ -150,6 +158,16 @@ export default function Home() {
             )}
           </ToolbarMenu>
         </Toolbar>
+
+        <Socials>
+          <IconButton sm className="fab fa-github" onClick={() => redirect('https://github.com/n1rium')} />
+          <IconButton
+            sm
+            className="fab fa-linkedin-in"
+            onClick={() => redirect('https://www.linkedin.com/in/johnny-blomgren-6a516789/')}
+          />
+          <IconButton sm className="fas fa-envelope" />
+        </Socials>
 
         <Title text="blomman" />
 

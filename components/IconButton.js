@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 
-export default styled.i.attrs({ className: 'flex flex-inline items-center justify-center p-3' })`
+export default styled.i.attrs({ className: 'flex flex-inline items-center justify-center' })`
   transition: all 0.15s var(--cubic);
   border: 2px solid var(--pink-600);
+  padding: 0.75rem;
   font-size: 1.25rem;
   box-shadow: 0px 0px 14px 6px rgb(0 0 0 / 50%);
   min-width: 52px;
@@ -13,9 +14,11 @@ export default styled.i.attrs({ className: 'flex flex-inline items-center justif
   ${(props) =>
     props.sm &&
     css`
-      min-width: 32px;
-      min-height: 32px;
+      min-width: 36px;
+      min-height: 36px;
+      padding: 0.5rem;
       font-size: 1rem;
+      border-width: 1px;
     `};
 
   ${(props) =>
