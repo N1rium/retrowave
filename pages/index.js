@@ -105,6 +105,10 @@ export default function Home() {
           <title>Johnny Blomgren</title>
           <link rel="icon" href="/favicon.ico" />
           <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+          <meta
+            name="description"
+            content="Portfolio of Johnny Blomgren, Front-end developer with a passion for music and games!"
+          />
         </Head>
 
         <Toolbar>
