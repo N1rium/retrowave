@@ -17,8 +17,7 @@ const Container = styled.div`
 `;
 
 const Welcome = styled(Container).attrs({ className: 'p-20 text-center' })`
-  background: linear-gradient(#121212 30%, transparent 80%),
-    url('https://c.wallhere.com/photos/c1/a2/vaporwave_car_Chevrolet_city_skyscraper_trees_birds_sunset-1794077.jpg!d');
+  background: linear-gradient(#121212 30%, transparent 80%), url('/bg1.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -31,8 +30,7 @@ const Welcome = styled(Container).attrs({ className: 'p-20 text-center' })`
 
 const Wrapper = styled(Container).attrs({ className: 'flex flex-col items-center justify-center' })`
   position: relative;
-  background: linear-gradient(rgba(0, 0, 0, 0.5) 75%, #121212 100%),
-    url('https://img5.goodfon.com/wallpaper/nbig/a/d2/vadim-motov-by-vadim-motov-spectating-science-fiction-lambor.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.5) 75%, #121212 100%), url('/bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
