@@ -55,30 +55,51 @@ const Chips = styled.div.attrs({ className: 'flex items-center justify-center' }
 `;
 
 export default function Projects({ projects, tags }) {
-  const [visible, setVisible] = useState(projects);
   const [selectedTags, setTags] = useState([]);
+
+  const selectTag = (tag) => {
+    const found = selectedTags.find((t) => t === tag);
+    const res = found ? selectedTags.filter((t) => t !== tag) : [...selectedTags, tag];
+    setTags(res);
+  };
+
+  const filtered = selectedTags.length
+    ? projects.filter((project) => {
+        let res = false;
+        project.tags.forEach((tag) => {
+          console.log(selectedTags.includes(tag));
+          if (selectedTags.includes(tag)) res = true;
+        });
+
+        return res;
+      })
+    : projects;
 
   return (
     <Wrapper>
       <Head>
         <title>Johnny Blomgren - Projects</title>
       </Head>
-      <h1 className="text-center font-marker text-6xl my-10 text-shadow-pulse">Projects</h1>
+      <h1 className="text-center font-marker text-6xl my-10">Projects</h1>
       <Chips>
         {tags.map((tag, i) => (
-          <Chip key={i}>{tag}</Chip>
+          <Chip key={i} active={selectedTags.includes(tag)} onClick={() => selectTag(tag)}>
+            {tag}
+          </Chip>
         ))}
       </Chips>
       <div className="text-sm px-2">
-        Showing {visible.length} out of {projects.length} results
+        Showing {filtered.length} out of {projects.length} results
       </div>
       <Grid>
-        {visible.map((project) => (
+        {filtered.map((project) => (
           <Project key={project.name} weight={project.weight}>
             <div className="title text-2xl font-marker">{project.name}</div>
             <footer>
-              {project.tags.map((tag, i) => (
-                <div className="text-sm">{tag}</div>
+              {project.tags.map((tag) => (
+                <div key={tag} className="text-sm">
+                  {tag}
+                </div>
               ))}
             </footer>
           </Project>

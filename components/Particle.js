@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   ${(props) => css`
     display: inline-block;
     position: absolute;
-    will-change: transform;
+    will-change: transform, opacity;
     left: ${props.x};
     top: ${props.y};
     width: ${props.size};
