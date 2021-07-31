@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jblomgren.com/sitemap.xml
