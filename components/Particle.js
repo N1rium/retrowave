@@ -14,9 +14,8 @@ const traverse = (x, y) => keyframes`
   }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.span`
   ${(props) => css`
-    display: inline-block;
     position: absolute;
     will-change: transform, opacity;
     left: ${props.x};
