@@ -175,12 +175,8 @@ export default function Home() {
         <Star style={{ position: 'absolute', top: '2em', left: '40vw' }} />
 
         <Nav>
-          <Button primary>
-            <div>Join session</div>
-          </Button>
-          <Button primary>
-            <div>Create session</div>
-          </Button>
+          <Button primary>Launch projects BETA</Button>
+          <Button primary>Create session</Button>
         </Nav>
       </Wrapper>
       <Welcome>
