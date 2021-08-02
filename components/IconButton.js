@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
+import RippleContainer from './Ripple';
 
-export default styled.i.attrs({ className: 'flex flex-inline items-center justify-center' })`
+const Wrapper = styled.i.attrs({ className: 'flex flex-inline items-center justify-center' })`
+  position: relative;
   transition: all 0.15s var(--cubic);
   border: 2px solid var(--pink-600);
   padding: 0.75rem;
@@ -46,3 +48,12 @@ export default styled.i.attrs({ className: 'flex flex-inline items-center justif
       text-shadow: 0px 0px 2px;
     `};
 `;
+
+export default function IconButton({ children, ...rest }) {
+  return (
+    <Wrapper {...rest}>
+      <RippleContainer />
+      {children}
+    </Wrapper>
+  );
+}

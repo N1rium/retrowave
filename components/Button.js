@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
+import RippleContainer from './Ripple';
 
-export default styled.button`
+export const Wrapper = styled.button`
+  position: relative;
   box-shadow: 0px 0px 14px 6px rgb(0 0 0 / 50%);
   font-family: 'Permanent Marker';
   transition: all 0.15s var(--cubic);
@@ -34,3 +36,12 @@ export default styled.button`
       color: #fff;
     `};
 `;
+
+export default function Button({ children, ...rest }) {
+  return (
+    <Wrapper {...rest}>
+      <RippleContainer />
+      {children}
+    </Wrapper>
+  );
+}
