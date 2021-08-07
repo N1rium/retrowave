@@ -23,6 +23,7 @@ export default function useHowler({ songs = [], updateInterval = 500, onSongEnde
   const getSong = () => state.songs[state.songIndex] || {};
 
   const setSongIndex = (songIndex) => {
+    if (state.loading) return;
     getSong().stop();
     updateState({ songIndex, isPlaying: false, progress: 0 });
   };
@@ -45,6 +46,7 @@ export default function useHowler({ songs = [], updateInterval = 500, onSongEnde
   };
 
   const play = () => {
+    if (state.loading || state.isPlaying) return;
     const song = getSong();
     if (song._state === 'unloaded') {
       updateState({ loading: true });
@@ -54,7 +56,7 @@ export default function useHowler({ songs = [], updateInterval = 500, onSongEnde
         play();
       });
     } else {
-      getSong().play();
+      song.play();
       updateState({ isPlaying: true });
     }
   };

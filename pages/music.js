@@ -98,9 +98,11 @@ export default function Music({ songs = [] }) {
   const {
     isPlaying,
     volume,
+    loading,
     progress,
     duration,
     songIndex,
+    play,
     togglePlay,
     setGlobalVolume,
     seek,
