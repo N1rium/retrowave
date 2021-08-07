@@ -52,7 +52,7 @@ const Wrapper = styled.i.attrs({ className: 'flex flex-inline items-center justi
 export default function IconButton({ children, ...rest }) {
   return (
     <Wrapper {...rest}>
-      <RippleContainer />
+      <RippleContainer color="#fff" />
       {children}
     </Wrapper>
   );
