@@ -18,6 +18,7 @@ export default function ParticleEmitter({
   sizes = ['4px', '6px'],
   ttls = [5, 10],
   colors = ['#fff', 'var(--pink-600)'],
+  playing = true,
 }) {
   const getRandomIntInclusive = (min, max) => {
     min = Math.ceil(min);
@@ -41,7 +42,7 @@ export default function ParticleEmitter({
   return (
     <Wrapper>
       {arr.map((particle) => (
-        <Particle key={particle.id} {...particle} />
+        <Particle key={particle.id} playing={playing} {...particle} />
       ))}
     </Wrapper>
   );

@@ -14,7 +14,13 @@ const traverse = (x, y) => keyframes`
   }
 `;
 
-const Wrapper = styled.span`
+const Wrapper = styled.span.attrs((props) => {
+  return {
+    style: {
+      animationPlayState: `${props.playing ? 'running' : 'paused'}`,
+    },
+  };
+})`
   ${(props) => css`
     position: absolute;
     will-change: transform, opacity;
@@ -38,7 +44,20 @@ export default function Particle({
   y = 0,
   dx = '250%',
   dy = '250%',
+  playing = true,
   onDeath = () => {},
 }) {
-  return <Wrapper color={color} size={size} ttl={ttl} x={x} y={y} dx={dx} dy={dy} onAnimationEnd={onDeath} />;
+  return (
+    <Wrapper
+      color={color}
+      playing={playing}
+      size={size}
+      ttl={ttl}
+      x={x}
+      y={y}
+      dx={dx}
+      dy={dy}
+      onAnimationEnd={onDeath}
+    />
+  );
 }
