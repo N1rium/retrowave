@@ -1,7 +1,17 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import Head from 'next/head';
 import Chip from '@/components/Chip';
+import Header from '@/components/Header';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const Wrapper = styled.div``;
 
@@ -18,6 +28,17 @@ const Project = styled.div`
   height: 300px;
   grid-column: ${(props) => `span ${props.weight} / auto`};
   background: #212121;
+  animation: ${fadeIn} 0.15s linear forwards;
+  animation-delay: ${(props) => `0.0${props.index * 2}s`};
+  opacity: 0;
+
+  ${(props) =>
+    props.bg &&
+    css`
+      background-image: ${`url(${props.bg})`};
+      background-position: center;
+      background-size: cover;
+    `};
 
   .title {
     position: absolute;
@@ -40,6 +61,12 @@ const Project = styled.div`
       &:not(:first-child) {
         margin-left: 1rem;
       }
+    }
+  }
+
+  &:hover {
+    .title {
+      text-decoration: underline;
     }
   }
 `;
@@ -80,6 +107,7 @@ export default function Projects({ projects, tags }) {
       <Head>
         <title>Johnny Blomgren - Projects</title>
       </Head>
+      <Header />
       <h1 className="text-center font-marker text-6xl my-10">Projects</h1>
       <Chips>
         {tags.map((tag, i) => (
@@ -92,8 +120,8 @@ export default function Projects({ projects, tags }) {
         Showing {filtered.length} out of {projects.length} results
       </div>
       <Grid>
-        {filtered.map((project) => (
-          <Project key={project.name} weight={project.weight}>
+        {filtered.map((project, i) => (
+          <Project key={`${project.name}_${i}`} index={i} weight={project.weight} bg={project.bg}>
             <div className="title text-2xl font-marker">{project.name}</div>
             <footer>
               {project.tags.map((tag) => (
@@ -112,14 +140,22 @@ export default function Projects({ projects, tags }) {
 export async function getStaticProps() {
   const projects = [
     { name: 'JSON Fiddle', weight: 1, tags: ['angular', 'css', 'front end'] },
-    { name: 'Clipboard Parser', weight: 1, tags: ['react', 'nextjs', 'styled components', 'front end'] },
+    {
+      name: 'Clipboard Parser',
+      weight: 1,
+      tags: ['react', 'nextjs', 'styled components', 'front end'],
+      bg: '/projects/clipboard-parser-bg.png',
+    },
     { name: 'Thief Legacy', weight: 2, tags: ['unity', 'c#', 'game development'] },
     { name: 'Shanes Theft', weight: 1, tags: ['phaser', 'javascript', 'game development', 'socket io'] },
-    { name: 'G-NES', weight: 2, tags: ['front end', 'javascript', 'socket io', 'nestjs'] },
-    { name: 'Timestamp Utils', weight: 1, tags: ['angular', 'express'] },
+    { name: 'G-NES', weight: 2, tags: ['front end', 'back end', 'javascript', 'socket io', 'nestjs'] },
+    { name: 'Timestamp Utils', weight: 1, tags: ['angular', 'express', 'back end'] },
     { name: 'Ortholepsia', weight: 2, tags: ['unity', 'c#', 'game development'] },
+    { name: 'jblomgren.com', weight: 2, tags: ['front end', 'nextjs', 'react', 'javascript', 'styled components'] },
     { name: 'CRUD Fiddle', weight: 1, tags: ['react', 'nextjs', 'styled components', 'front end'] },
-    { name: 'Chessports', weight: 2, tags: ['front end', 'javascript', 'socket io', 'nestjs'] },
+    { name: 'Chessports', weight: 2, tags: ['front end', 'back end', 'javascript', 'socket io', 'nestjs'] },
+    { name: 'Sudoku Smash', weight: 1, tags: ['front end', 'back end', 'javascript', 'nestjs'] },
+    { name: 'G-Loot Presentation', weight: 2, tags: ['react', 'front end', 'javascript'] },
   ];
 
   const tags = [...new Set(projects.reduce((acc, i) => [...acc, ...i.tags], []))];
