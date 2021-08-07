@@ -32,12 +32,12 @@ export const Ripple = styled.span.attrs((props) => {
 })`
   position: absolute;
   border-radius: 9999px;
-  background: var(--pink-400);
+  background: ${(props) => props.color || 'var(--pink-400)'};
   animation: ${ripple} 0.5s ease-in-out;
   transform: scale(0);
 `;
 
-export default function RippleContainer() {
+export default function RippleContainer({ color = null }) {
   const [ripples, setRipples] = useState([]);
 
   const click = (e) => {
@@ -58,7 +58,7 @@ export default function RippleContainer() {
   return (
     <Root onMouseDown={click}>
       {ripples.map((r) => (
-        <Ripple key={r.id} x={r.x} y={r.y} size={r.size} onAnimationEnd={() => killRipple(r.id)} />
+        <Ripple key={r.id} x={r.x} y={r.y} size={r.size} color={color} onAnimationEnd={() => killRipple(r.id)} />
       ))}
     </Root>
   );
