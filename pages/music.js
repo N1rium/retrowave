@@ -117,6 +117,10 @@ export default function Music({ songs = [] }) {
     <Wrapper>
       <Head>
         <title>Johnny Blomgren - Music</title>
+        <meta
+          name="description"
+          content="Music portfolio made by Johnny Blomgren with a built in music player made with React + Styled Components"
+        />
       </Head>
       <Main>
         <SongHeader>
