@@ -193,6 +193,7 @@ export async function getStaticProps() {
   const songs = [
     { id: 'theunknown', name: 'The Unknown', src: '/music/the-unknown.mp3', artist: 'Blomman' },
     { id: 'ghosts', name: 'Ghosts', src: '/music/ghosts.mp3', artist: 'Blomman' },
+    { id: 'dailianis', name: 'Dailianis', src: '/music/dailianis.mp3', artist: 'Blomman' },
     // { id: 'enterthetomb', name: 'Enter The Tomb', src: '/music/enter-the-tomb.mp3', artist: 'Blomman' },
   ];
 
