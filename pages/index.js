@@ -106,6 +106,10 @@ export default function Home() {
             name="description"
             content="Portfolio of Johnny Blomgren, Front-end developer with a passion for music and games!"
           />
+          <meta
+            name="keywords"
+            content="johnny blomgren, jblomgren, portfolio, front-end, frontend, react, nextjs, styled components, nestjs"
+          />
         </Head>
 
         <Toolbar>
