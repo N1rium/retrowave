@@ -3,6 +3,7 @@ import { Howl, Howler } from 'howler';
 
 const initialState = {
   isPlaying: false,
+  hasPlayed: false,
   volume: 1,
   volumePercentage: 100,
   progress: 0,
@@ -24,6 +25,10 @@ export default function useHowler({ songs = [], updateInterval = 500, onSongEnde
 
   const setSongIndex = (songIndex) => {
     if (state.loading) return;
+    if (songIndex === state.songIndex) {
+      state.isPlaying ? pause() : play();
+      return;
+    }
     getSong().stop();
     updateState({ songIndex, isPlaying: false, progress: 0 });
   };
@@ -52,12 +57,12 @@ export default function useHowler({ songs = [], updateInterval = 500, onSongEnde
       updateState({ loading: true });
       song.load();
       song.on('load', () => {
-        updateState({ loading: false });
+        updateState({ loading: false, hasPlayed: true });
         play();
       });
     } else {
       song.play();
-      updateState({ isPlaying: true });
+      updateState({ isPlaying: true, hasPlayed: true });
     }
   };
 
@@ -110,6 +115,12 @@ export default function useHowler({ songs = [], updateInterval = 500, onSongEnde
       clearInterval(interval);
     };
   }, [state.songs, state.songIndex]);
+
+  useEffect(() => {
+    if (state.hasPlayed) {
+      play();
+    }
+  }, [state.songIndex]);
 
   return {
     ...state,
