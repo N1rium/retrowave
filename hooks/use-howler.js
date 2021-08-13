@@ -14,7 +14,7 @@ const initialState = {
   songs: [],
 };
 
-export default function useHowler({ songs = [], updateInterval = 500, onSongEnded = null }) {
+export default function useHowler({ songs = [], updateInterval = 500, autoPlay = true, onSongEnded = null }) {
   const [state, setState] = useState({
     ...initialState,
     songs: songs.map((opt) => new Howl({ ...opt })),
@@ -117,7 +117,7 @@ export default function useHowler({ songs = [], updateInterval = 500, onSongEnde
   }, [state.songs, state.songIndex]);
 
   useEffect(() => {
-    if (state.hasPlayed) {
+    if (state.hasPlayed && autoPlay) {
       play();
     }
   }, [state.songIndex]);
