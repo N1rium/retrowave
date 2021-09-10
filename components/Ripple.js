@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const ripple = keyframes`
+const scaleUpFadeOut = keyframes`
   to {
     opacity: 0;
     transform: scale(2);
   }
 `;
 
-export const Root = styled.span`
+const Wrapper = styled.span`
   position: absolute;
   top: 0;
   left: 0;
@@ -21,45 +21,44 @@ export const Root = styled.span`
 `;
 
 export const Ripple = styled.span.attrs((props) => {
+  const { x, y, size } = props;
   return {
     style: {
-      left: `${props.x}px`,
-      top: `${props.y}px`,
-      width: `${props.size}px`,
-      height: `${props.size}px`,
+      left: `${x}px`,
+      top: `${y}px`,
+      width: `${size}px`,
+      height: `${size}px`,
     },
   };
 })`
   position: absolute;
   border-radius: 9999px;
   background: ${(props) => props.color || 'var(--pink-400)'};
-  animation: ${ripple} 0.5s ease-in-out;
   transform: scale(0);
+  animation: ${scaleUpFadeOut} 0.5s ease-in-out;
 `;
 
-export default function RippleContainer({ color = null }) {
+export default function RippleController({ color = null }) {
   const [ripples, setRipples] = useState([]);
 
   const click = (e) => {
-    const { currentTarget: target, clientX, clientY } = e;
+    const { currentTarget, clientX, clientY } = e;
+    const { x, y, width, height } = currentTarget.getBoundingClientRect();
+    const size = width > height ? width : height;
 
-    const bounds = target.getBoundingClientRect();
+    const posX = Math.floor(clientX - x - size / 2);
+    const posY = Math.floor(clientY - y - size / 2);
 
-    const size = bounds.width > bounds.height ? bounds.width : bounds.height;
-
-    const x = Math.floor(clientX - bounds.x - bounds.width / 2);
-    const y = Math.floor(clientY - bounds.y - bounds.width / 2);
-
-    setRipples([...ripples, { x, y, size, id: Date.now() }]);
+    setRipples([...ripples, { x: posX, y: posY, size, id: Date.now() }]);
   };
 
   const killRipple = (id) => setRipples((arr) => arr.filter((r) => r.id !== id));
 
   return (
-    <Root onMouseDown={click}>
+    <Wrapper onMouseDown={click}>
       {ripples.map((r) => (
         <Ripple key={r.id} x={r.x} y={r.y} size={r.size} color={color} onAnimationEnd={() => killRipple(r.id)} />
       ))}
-    </Root>
+    </Wrapper>
   );
 }
