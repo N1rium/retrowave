@@ -34,6 +34,7 @@ class MyDocument extends Document {
           <script async src="https://kit.fontawesome.com/dad3f36068.js" crossOrigin="anonymous"></script>
           <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
         </Head>
         <body>
           <Main />

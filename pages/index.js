@@ -2,13 +2,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import IconButton from '../components/IconButton';
-import Fieldset from '../components/Fieldset';
-import RangeInput from '../components/RangeInput';
-import Title from '../components/Title';
-import Star from '../components/Star';
 import ParticleEmitter from '../components/ParticleEmitter';
-import { useState } from 'react';
-import Link from '../components/Link';
 
 const Container = styled.div`
   position: relative;
@@ -16,11 +10,15 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-const Welcome = styled(Container).attrs({ className: 'p-20 text-center' })`
+const Welcome = styled.div.attrs({ className: 'p-20 text-center' })`
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 4rem);
   background: linear-gradient(#121212 30%, transparent 80%), url('/bg1.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 
   main {
     max-width: 640px;
@@ -28,161 +26,21 @@ const Welcome = styled(Container).attrs({ className: 'p-20 text-center' })`
   }
 `;
 
-const Wrapper = styled(Container).attrs({ className: 'flex flex-col items-center justify-center' })`
-  position: relative;
-  background: linear-gradient(rgba(0, 0, 0, 0.5) 75%, #121212 100%), url('/bg.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-`;
-
-const Toolbar = styled.div.attrs({ className: 'p-5' })`
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  & > :not(:first-child) {
-    margin-left: 1rem;
-
-    input {
-      width: 100%;
-    }
-  }
-`;
-
-const ToolbarMenu = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  transform: translate(-1rem, 100%);
-  & > * {
-    min-width: 320px;
-  }
-`;
-
-const Nav = styled.div.attrs({ className: 'flex flex-col p-10' })`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  button {
-    min-width: 320px;
-    &:not(:first-child) {
-      margin-top: 1rem;
-    }
-  }
-`;
-
-const ColorBox = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 3px;
-  background: var(--pink-600);
-`;
-
-const Socials = styled.div.attrs({ className: 'p-5 flex ' })`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-
-  & > :not(:first-child) {
-    margin-left: 1rem;
-  }
-`;
-
 export default function Home() {
-  const [menu, setMenu] = useState('welcome');
-  const [val, setValue] = useState(50);
-  const redirect = (url) => window.open(url);
-
   return (
     <>
-      <Wrapper>
-        <Head>
-          <title>Johnny Blomgren</title>
-          <link rel="icon" href="/favicon.ico" />
-          <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
-          <meta
-            name="description"
-            content="Portfolio of Johnny Blomgren, Front-end developer with a passion for music and games!"
-          />
-          <meta
-            name="keywords"
-            content="johnny blomgren, jblomgren, portfolio, front-end, frontend, react, nextjs, styled components, nestjs"
-          />
-        </Head>
-
-        <Toolbar>
-          <IconButton rounded className="fas fa-user" active={menu === 'profile'} onClick={() => setMenu('profile')} />
-          <IconButton
-            rounded
-            className="fas fa-question"
-            active={menu === 'welcome'}
-            onClick={() => setMenu('welcome')}
-          />
-          <IconButton rounded className="fas fa-cog" active={menu === 'settings'} onClick={() => setMenu('settings')} />
-
-          <ToolbarMenu>
-            {menu === 'settings' && (
-              <Fieldset title="Settings">
-                <RangeInput type="range" min="0" max="100" value={val} onChange={(e) => setValue(e.target.value)} />
-                <ColorBox />
-              </Fieldset>
-            )}
-            {menu === 'profile' && (
-              <Fieldset title="Profile" className="text-sm">
-                <div>
-                  <p>
-                    I'm Johnny Blomgren, also known as "Blomman", a front end developer with a passion for games and
-                    music
-                  </p>
-                  <p className="mt-2">
-                    I've got 6+ years experience working within web with anything from{' '}
-                    <Link href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">VanillaJS</Link> to{' '}
-                    <Link href="https://angular.io/">Angular</Link> and <Link href="https://reactjs.org/">React</Link>.
-                    I am also comfortable in creating backends and REST APIs using{' '}
-                    <Link href="https://nestjs.com/">NestJS</Link>, <Link href="https://www.prisma.io/">Prisma</Link> /{' '}
-                    <Link href="https://typeorm.io/#/">TypeORM</Link> &{' '}
-                    <Link href="https://www.postgresql.org/">Postgres</Link>.
-                  </p>
-                  <p className="mt-2">
-                    Aside from web I also do some game development in <Link href="https://unity.com/">Unity</Link> with
-                    C# from time to time
-                  </p>
-                </div>
-              </Fieldset>
-            )}
-            {menu === 'welcome' && (
-              <Fieldset title="Welcome!" className="text-sm">
-                <p>You've reached my portfolio!</p>
-                <p className="mt-2">
-                  Don't know where to start? Have a look at some of my projects or simply surf around freely. Rad things
-                  are hidden everywhere!
-                </p>
-              </Fieldset>
-            )}
-          </ToolbarMenu>
-        </Toolbar>
-
-        <Socials>
-          <IconButton sm className="fab fa-github" onClick={() => redirect('https://github.com/n1rium')} />
-          <IconButton
-            sm
-            className="fab fa-linkedin-in"
-            onClick={() => redirect('https://www.linkedin.com/in/johnny-blomgren-6a516789/')}
-          />
-          <IconButton sm className="fas fa-envelope" />
-        </Socials>
-
-        <Title text="blomman" />
-
-        <Star style={{ position: 'absolute', top: '2em', left: '40vw' }} />
-
-        <Nav>
-          <Button primary>Launch projects BETA</Button>
-          <Button primary>Create session</Button>
-        </Nav>
-      </Wrapper>
+      <Head>
+        <title>Johnny Blomgren</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Portfolio of Johnny Blomgren, Front-end developer with a passion for music and games!"
+        />
+        <meta
+          name="keywords"
+          content="jblomgren, johnny blomgren, blomman, portfolio, front-end, frontend, react, nextjs, styled components, nestjs, n1rium, nirium"
+        />
+      </Head>
       <Welcome>
         <main>
           <h1 className="font-marker text-5xl mt-20">
@@ -197,8 +55,8 @@ export default function Home() {
             end consumer be it a client or a co-worker. "How would I want to use this?" is one of the most beneficial
             questions you can ask yourself.
           </p>
+          <ParticleEmitter count={20} />
         </main>
-        <ParticleEmitter count={20} />
       </Welcome>
     </>
   );

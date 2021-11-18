@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import Head from 'next/head';
 import Chip from '@/components/Chip';
-import Header from '@/components/Header';
 
 const fadeIn = keyframes`
   0% {
@@ -107,7 +106,6 @@ export default function Projects({ projects, tags }) {
       <Head>
         <title>Johnny Blomgren - Projects</title>
       </Head>
-      <Header />
       <h1 className="text-center font-marker text-6xl my-10">Projects</h1>
       <Chips>
         {tags.map((tag, i) => (

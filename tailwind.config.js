@@ -10,6 +10,7 @@ module.exports = {
       },
       fontFamily: {
         marker: ['Permanent Marker'],
+        fredoka: ['Fredoka One'],
       },
     },
   },

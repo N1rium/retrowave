@@ -5,11 +5,11 @@ const Wrapper = styled.i.attrs({ className: 'flex flex-inline items-center justi
   position: relative;
   transition: all 0.15s var(--cubic);
   border: 2px solid var(--pink-600);
-  padding: 0.75rem;
-  font-size: 1.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
   box-shadow: 0px 0px 14px 6px rgb(0 0 0 / 50%);
-  min-width: 52px;
-  min-height: 52px;
+  min-width: 42px;
+  min-height: 42px;
 
   border-radius: ${(props) => (props.rounded ? '9999px' : '6px')};
 

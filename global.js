@@ -4,6 +4,7 @@ export default createGlobalStyle`
   :root {
     --font-marker: 'Permanent marker';
     --font-opensans: 'Lato', sans-serif;
+    --font-fredoka: 'Fredoka One', cursive;
 
     --gray-200: #E5E7EB;
 
