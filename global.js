@@ -32,6 +32,13 @@ export default createGlobalStyle`
     font-family: var(--font-opensans);
   }
 
+  body {
+    font-size: 16px;
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+  }
+
 
   blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
       margin: 0;
@@ -39,7 +46,25 @@ export default createGlobalStyle`
 
   a {
     color: inherit;
-    text-decoration: inherit;
+    font-weight: bold;
+    color: var(--pink-500);
+    text-decoration: underline;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.05s var(--cubic);
+    will-change: opacity;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-fredoka);
+  }
+
+  p {
+    margin: 1rem 0;
   }
 
   .flex {

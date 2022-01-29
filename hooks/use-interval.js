@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function useInterval(callback, delay = 500) {
   const [index, setIndex] = useState(0);
