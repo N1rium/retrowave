@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import Image from 'next/image';
+import styled from "styled-components";
+import Image from "next/image";
 
-const Wrapper = styled.div.attrs({ className: 'p-4' })`
+const Wrapper = styled.div.attrs({ className: "p-4" })`
   user-select: none;
   cursor: default;
   background: #181818;
@@ -39,16 +39,22 @@ const ImageWrapper = styled(ContentWrapper)`
 
 const TextWrapper = styled(ContentWrapper)``;
 
-const Title = styled.div.attrs({ className: 'text-lg' })`
+const Title = styled.div.attrs({ className: "text-lg" })`
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
-const Description = styled.div.attrs({ className: 'text-sm text-gray-400 mt-1' })``;
+const Description = styled.div.attrs({
+  className: "text-sm text-gray-400 mt-1",
+})``;
 
-export default function VerticalCard({ img = null, title = '', description = '' }) {
+export default function VerticalCard({
+  img = null,
+  title = "",
+  description = "",
+}) {
   return (
     <Wrapper>
       <ImageWrapper>

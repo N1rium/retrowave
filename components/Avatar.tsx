@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import Image from 'next/image';
-import { useState } from 'react';
+import styled from "styled-components";
+import Image from "next/image";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   position: relative;
@@ -10,12 +10,12 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
-export default function Avatar({ size = 'base', src = '/avatar.jpeg' }) {
+export default function Avatar({ size = "base", src = "/avatar.jpeg" }) {
   const [sizes] = useState({
-    sm: '32px',
-    base: '64px',
-    large: '128px',
-    xl: '256px',
+    sm: "32px",
+    base: "64px",
+    large: "128px",
+    xl: "256px",
   });
 
   return (
