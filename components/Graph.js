@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const SVG = styled.svg``;
 
 const UI = styled.div`
   width: 320px;
   height: 180px;
-  border-image: url('ui_dark_32.png');
+  border-image: url("ui_dark_32.png");
 `;
 
 export default function Graph({ data = [{ y: 80 }, { y: 40 }, { y: 20 }] }) {

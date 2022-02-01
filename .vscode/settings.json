@@ -1,7 +1,3 @@
 {
-  "html.hover.documentation": false,
-  "html.hover.references": false,
-  "css.hover.documentation": false,
-  "scss.hover.documentation": false,
-  "scss.hover.references": false
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }

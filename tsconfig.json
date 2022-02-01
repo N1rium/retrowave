@@ -7,9 +7,10 @@
       "dom.iterable",
       "esnext"
     ],
+    "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -17,7 +18,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "declaration": true,
+    "jsx": "react-jsx",
     "paths": {
         "@/components/*": ["components/*"],
         "@/hooks/*": ["hooks/*"],
